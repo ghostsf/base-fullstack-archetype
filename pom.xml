@@ -34,12 +34,12 @@
         <repository>
             <id>releases</id>
             <name>private-nexus-library-releases</name>
-            <url>http://nexus.dev.17of.com/content/repositories/releases/</url>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
         </repository>
         <snapshotRepository>
             <id>snapshots</id>
             <name>private-nexus-library-snapshots</name>
-            <url>http://nexus.dev.17of.com/content/repositories/snapshots/</url>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
         </snapshotRepository>
     </distributionManagement>
 </project>
