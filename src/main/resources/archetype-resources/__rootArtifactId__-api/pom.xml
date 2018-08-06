@@ -12,19 +12,19 @@
 		<com.blackuio.common.version>1.0.0</com.blackuio.common.version>
 	</properties>
 
-	<!--<distributionManagement>-->
-		<!--<repository>-->
-			<!--<id>releases</id>-->
-			<!--<name>private-nexus-library-releases</name>-->
-			<!--<url>http://maven.aliyun.com/nexus/content/groups/public/</url>-->
-		<!--</repository>-->
+	<distributionManagement>
+		<repository>
+			<id>nexus-releases</id>
+			<name>private-nexus-library-releases</name>
+			<url>http://nexus.blackuio.com/repository/maven-releases/</url>
+		</repository>
 
-		<!--<snapshotRepository>-->
-			<!--<id>snapshots</id>-->
-			<!--<name>private-nexus-library-snapshots</name>-->
-			<!--<url>http://maven.aliyun.com/nexus/content/groups/public/</url>-->
-		<!--</snapshotRepository>-->
-	<!--</distributionManagement>-->
+		<snapshotRepository>
+			<id>nexus-snapshots</id>
+			<name>private-nexus-library-snapshots</name>
+			<url>http://nexus.blackuio.com/repository/maven-snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
 	<dependencies>
 		<dependency>
 			<groupId>com.alibaba</groupId>
