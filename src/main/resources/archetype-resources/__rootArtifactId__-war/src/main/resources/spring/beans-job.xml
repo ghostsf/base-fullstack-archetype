@@ -14,5 +14,5 @@
 
     <!--配置作业注册中心 ${zookeeper.address} 
     <reg:zookeeper id="regCenter" server-lists="${zookeeper.address}" namespace="${rootArtifactId}-job" base-sleep-time-milliseconds="1000" max-sleep-time-milliseconds="3000" max-retries="3" />   
-
+    -->
    </beans>

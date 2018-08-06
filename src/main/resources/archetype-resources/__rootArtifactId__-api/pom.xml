@@ -4,7 +4,7 @@
 	<!-- 需手动删除parent，否则会传递依赖jar包 -->
 	<artifactId>${artifactId}</artifactId>
 	<groupId>${groupId}</groupId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>${version}</version>
 	<properties>
 		<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
