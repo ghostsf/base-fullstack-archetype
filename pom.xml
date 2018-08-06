@@ -32,14 +32,14 @@
 	</build>
     <distributionManagement>
         <repository>
-            <id>releases</id>
+            <id>nexus-releases</id>
             <name>private-nexus-library-releases</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <url>http://nexus.blackuio.com/repository/maven-releases/</url>
         </repository>
         <snapshotRepository>
-            <id>snapshots</id>
+            <id>nexus-snapshots</id>
             <name>private-nexus-library-snapshots</name>
-            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+            <url>http://nexus.blackuio.com/repository/maven-snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
 </project>
