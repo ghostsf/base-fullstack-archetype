@@ -1,0 +1,45 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.blackuio.rd</groupId>
+	<artifactId>base-fullstack-archetype</artifactId>
+	<version>1.0.0</version>
+	<packaging>maven-archetype</packaging>
+	<name>Archetype - base-fullstack</name>
+	<url>http://maven.apache.org</url>
+	
+	<properties>
+		<maven.archetype.plugin.version>3.0.1</maven.archetype.plugin.version>
+	</properties>
+	<build>
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.archetype</groupId>
+				<artifactId>archetype-packaging</artifactId>
+				<version>${maven.archetype.plugin.version}</version>
+			</extension>
+		</extensions>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<includeEmptyDirs>true</includeEmptyDirs>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+    <distributionManagement>
+        <repository>
+            <id>releases</id>
+            <name>private-nexus-library-releases</name>
+            <url>http://nexus.dev.17of.com/content/repositories/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshots</id>
+            <name>private-nexus-library-snapshots</name>
+            <url>http://nexus.dev.17of.com/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+</project>

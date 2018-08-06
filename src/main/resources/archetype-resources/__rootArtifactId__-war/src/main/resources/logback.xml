@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration>
+	<!-- 日志文件目录 -->
+	<property name="log.path" value="/home/lbyw/logs/${rootArtifactId}" />
+  	
+	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>%date|%X{invokeNo}|%level|%logger{50}|%msg%n
+			</pattern>
+		</encoder>
+	</appender>
+
+    <!-- Action访问记录 -->
+    <appender name="actionAccessAppender"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.path}/action-access.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${log.path}/action-access.%d{yyyy-MM-dd}.log
+            </fileNamePattern>
+            <!-- <maxHistory>10</maxHistory> -->
+        </rollingPolicy>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <pattern>%date|%thread|%X{invokeNo}|%X{ip}|%X{user}|%msg%n</pattern>
+        </encoder>
+    </appender>
+
+	<appender name="mainAppender"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>ERROR</level>
+			<onMatch>DENY</onMatch>
+			<onMismatch>ACCEPT</onMismatch>
+		</filter>
+		<file>${log.path}/${rootArtifactId}.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log.path}/${rootArtifactId}.%d{yyyy-MM-dd}.log
+			</fileNamePattern>
+			<!-- <maxHistory>10</maxHistory> -->
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<MaxFileSize>500MB</MaxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>%date|%X{invokeNo}|%level|%logger{0}|%msg%n
+			</pattern>
+		</encoder>
+	</appender>
+	
+	<!-- 门户错误 -->
+	<appender name="mainErrorAppender"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>ERROR</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+		<file>${log.path}/error.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log.path}/error.%d{yyyy-MM-dd}.log
+			</fileNamePattern>
+			<!-- <maxHistory>10</maxHistory> -->
+		</rollingPolicy>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>%date|%X{invokeNo}|%logger{0}|%msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- 其他日志 -->
+	<appender name="otherAppender"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>ERROR</level>
+			<onMatch>DENY</onMatch>
+			<onMismatch>ACCEPT</onMismatch>
+		</filter>
+		<file>${log.path}/other.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log.path}/other.%d{yyyy-MM-dd}.log
+			</fileNamePattern>
+			<!-- <maxHistory>10</maxHistory> -->
+			<timeBasedFileNamingAndTriggeringPolicy
+				class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<MaxFileSize>500MB</MaxFileSize>
+			</timeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>%date|%X{invokeNo}|%level|%logger{50}|%msg%n
+			</pattern>
+		</encoder>
+	</appender>
+
+	<!-- 其他错误日志 -->
+	<appender name="otherErrorAppender"
+		class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>ERROR</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>
+		<file>${log.path}/other-error.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${log.path}/other-error.%d{yyyy-MM-dd}.log
+			</fileNamePattern>
+			<!-- <maxHistory>10</maxHistory> -->
+		</rollingPolicy>
+		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+			<pattern>%date|%X{invokeNo}|%logger{50}|%msg%n</pattern>
+		</encoder>
+	</appender>
+
+    <logger name="ActionAccessLogger" level="INFO" additivity="false">
+        <appender-ref ref="actionAccessAppender" />
+        <appender-ref ref="mainAppender" />
+    </logger>
+
+	<logger name="${groupId}" level="INFO" additivity="false">
+		<appender-ref ref="mainAppender" />
+		<appender-ref ref="mainErrorAppender" />
+	</logger>
+
+	<logger name="ch.qos.logback" level="ERROR" />
+	<logger name="org.springframework" level="ERROR" />
+	<logger name="org.mybatis" level="ERROR" />
+	<logger name="org.mysql" level="ERROR" />
+	<logger name="org.springframework.web.servlet.mvc.method" level="ERROR" />
+	<logger name="org.apache" level="ERROR" />
+	<logger name="com.opensymphony.xwork2" level="ERROR" />
+	<logger name="com.dangdang" level="ERROR" />
+
+	<root>
+		<level value="INFO" />
+		<appender-ref ref="otherAppender" />
+		<appender-ref ref="otherErrorAppender" />
+	</root>
+</configuration>

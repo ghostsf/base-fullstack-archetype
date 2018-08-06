@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<archetype-descriptor name="base-fullstack">
+	<requiredProperties>
+		<requiredProperty key="dbName">
+			<defaultValue>dbName</defaultValue>
+		</requiredProperty>
+		<requiredProperty key="dbUser">
+			<defaultValue>user</defaultValue>
+		</requiredProperty>
+		<requiredProperty key="dbPwd">
+			<defaultValue>password</defaultValue>
+		</requiredProperty>
+		<requiredProperty key="zkPort">
+			<defaultValue>20881</defaultValue>
+		</requiredProperty>
+	</requiredProperties>
+	<fileSets>
+		<fileSet filtered="true" packaged="false" encoding="UTF-8">
+			<directory></directory>
+			<includes>
+				<include>pom.xml</include>
+			</includes>
+		</fileSet>
+	</fileSets>
+	<modules>
+		<module id="${rootArtifactId}-api" dir="__rootArtifactId__-api" name="${rootArtifactId}-api">
+			<fileSets>
+				<fileSet filtered="true" encoding="UTF-8" packaged="true">
+					<directory>src/main/java</directory>
+					<includes>
+						<include>**/*.java</include>
+						<include>**/*.txt</include>
+					</includes>
+				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8" packaged="true">
+					<directory>src/test/java</directory>
+					<includes>
+						<include>**/*.java</include>
+					</includes>
+				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8" packaged="false">
+					<directory>src/main/resources</directory>
+					<includes>
+						<include>**/*.*</include>
+					</includes>
+				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8" packaged="false">
+					<directory>src/test/resources</directory>
+					<includes>
+						<include>**/*.*</include>
+					</includes>
+				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8">
+					<directory></directory>
+					<includes>
+						<include>pom.xml</include>
+					</includes>
+				</fileSet>
+			</fileSets>
+		</module>
+		<module id="${rootArtifactId}-common" dir="__rootArtifactId__-common"
+			name="${rootArtifactId}-common">
+			<fileSets>
+				<fileSet filtered="true" encoding="UTF-8" packaged="true">
+					<directory>src/main/java</directory>
+					<includes>
+						<include>**/*.java</include>
+						<include>**/*.txt</include>
+					</includes>
+				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8" packaged="true">
+					<directory>src/test/java</directory>
+					<includes>
+						<include>**/*.java</include>
+					</includes>
+				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8" packaged="false">
+					<directory>src/main/resources</directory>
+					<includes>
+						<include>**/*.*</include>
+					</includes>
+				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8" packaged="false">
+					<directory>src/test/resources</directory>
+					<includes>
+						<include>**/*.*</include>
+					</includes>
+				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8">
+					<directory></directory>
+					<includes>
+						<include>pom.xml</include>
+					</includes>
+				</fileSet>
+			</fileSets>
+		</module>
+		<module id="${rootArtifactId}-dao" dir="__rootArtifactId__-dao" name="${rootArtifactId}-dao">
+			<fileSets>
+				<fileSet filtered="true" encoding="UTF-8" packaged="true">
+					<directory>src/main/java</directory>
+					<includes>
+						<include>**/*.java</include>
+						<include>**/*.xml</include>
+						<include>**/*.txt</include>
+					</includes>
+				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8" packaged="false">
+					<directory>src/test/java</directory>
+					<includes>
+						<include>**/*.java</include>
+						<include>**/*.properties</include>
+					</includes>
+				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8" packaged="false">
+					<directory>src/main/resources</directory>
+					<includes>
+						<include>**/*.*</include>
+					</includes>
+				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8" packaged="false">
+					<directory>src/test/resources</directory>
+					<includes>
+						<include>**/*.*</include>
+					</includes>
+				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8">
+					<directory></directory>
+					<includes>
+						<include>pom.xml</include>
+					</includes>
+				</fileSet>
+			</fileSets>
+		</module>
+		<module id="${rootArtifactId}-integration" dir="__rootArtifactId__-integration"
+			name="i${rootArtifactId}-integration">
+			<fileSets>
+				<fileSet filtered="true" encoding="UTF-8" packaged="true">
+					<directory>src/main/java</directory>
+					<includes>
+						<include>**/*.java</include>
+						<include>**/*.txt</include>
+					</includes>
+				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8" packaged="true">
+					<directory>src/test/java</directory>
+					<includes>
+						<include>**/*.java</include>
+					</includes>
+				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8" packaged="false">
+					<directory>src/main/resources</directory>
+					<includes>
+						<include>**/*.*</include>
+					</includes>
+				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8" packaged="false">
+					<directory>src/test/resources</directory>
+					<includes>
+						<include>**/*.*</include>
+					</includes>
+				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8">
+					<directory></directory>
+					<includes>
+						<include>pom.xml</include>
+					</includes>
+				</fileSet>
+			</fileSets>
+		</module>
+		<module id="${rootArtifactId}-service" dir="__rootArtifactId__-service"
+			name="${rootArtifactId}-service">
+			<fileSets>
+				<fileSet filtered="true" encoding="UTF-8" packaged="true">
+					<directory>src/main/java</directory>
+					<includes>
+						<include>**/*.java</include>
+						<include>**/*.txt</include>
+					</includes>
+				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8" packaged="true">
+					<directory>src/test/java</directory>
+					<includes>
+						<include>**/*.java</include>
+					</includes>
+				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8" packaged="false">
+					<directory>src/main/resources</directory>
+					<includes>
+						<include>**/*.*</include>
+					</includes>
+				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8" packaged="false">
+					<directory>src/test/resources</directory>
+					<includes>
+						<include>**/*.*</include>
+					</includes>
+				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8">
+					<directory></directory>
+					<includes>
+						<include>pom.xml</include>
+					</includes>
+				</fileSet>
+			</fileSets>
+		</module>
+		<module id="${rootArtifactId}-war" dir="__rootArtifactId__-war" name="${rootArtifactId}-war">
+			<fileSets>
+				<fileSet filtered="true" encoding="UTF-8" packaged="true">
+					<directory>src/main/java</directory>
+					<includes>
+						<include>**/*.java</include>
+						<include>**/*.txt</include>
+					</includes>
+				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8" packaged="false">
+					<directory>src/main/deploy</directory>
+					<includes>
+						<include>**/*.properties</include>
+					</includes>
+				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8" packaged="true">
+					<directory>src/test/java</directory>
+					<includes>
+						<include>**/*.java</include>
+					</includes>
+				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8" packaged="false">
+					<directory>src/main/resources</directory>
+					<includes>
+						<include>**/*.*</include>
+					</includes>
+				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8" packaged="false">
+					<directory>src/test/resources</directory>
+					<includes>
+						<include>**/*.*</include>
+					</includes>
+				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8">
+					<directory></directory>
+					<includes>
+						<include>pom.xml</include>
+					</includes>
+				</fileSet>
+				<fileSet filtered="true" encoding="UTF-8" packaged="false">
+					<directory>src/main/webapp</directory>
+					<includes>
+						<include>**/web.xml</include>
+						<include>**/*.txt</include>
+					</includes>
+				</fileSet>
+				<fileSet filtered="false" encoding="UTF-8" packaged="false">
+					<directory>src/main/webapp</directory>
+					<includes>
+						<include>**/*.*</include>
+					</includes>
+					<excludes>
+						<exclude>**/web.xml</exclude>
+						<exclude>**/*.txt</exclude>
+					</excludes>
+				</fileSet>
+			</fileSets>
+		</module>
+	</modules>
+</archetype-descriptor>

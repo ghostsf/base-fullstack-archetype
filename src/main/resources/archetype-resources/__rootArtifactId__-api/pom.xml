@@ -1,0 +1,41 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<!-- 需手动删除parent，否则会传递依赖jar包 -->
+	<artifactId>${artifactId}</artifactId>
+	<groupId>${groupId}</groupId>
+	<version>0.0.1-SNAPSHOT</version>
+	<properties>
+		<maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<fastjson.version>1.2.7</fastjson.version>
+		<com.blackuio.common.version>1.0.0</com.blackuio.common.version>
+	</properties>
+
+	<!--<distributionManagement>-->
+		<!--<repository>-->
+			<!--<id>releases</id>-->
+			<!--<name>private-nexus-library-releases</name>-->
+			<!--<url>http://maven.aliyun.com/nexus/content/groups/public/</url>-->
+		<!--</repository>-->
+
+		<!--<snapshotRepository>-->
+			<!--<id>snapshots</id>-->
+			<!--<name>private-nexus-library-snapshots</name>-->
+			<!--<url>http://maven.aliyun.com/nexus/content/groups/public/</url>-->
+		<!--</snapshotRepository>-->
+	<!--</distributionManagement>-->
+	<dependencies>
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>${fastjson.version}</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.blackuio.base</groupId>
+			<artifactId>common</artifactId>
+			<version>${com.blackuio.common.version}</version>
+		</dependency>
+	</dependencies>
+</project>

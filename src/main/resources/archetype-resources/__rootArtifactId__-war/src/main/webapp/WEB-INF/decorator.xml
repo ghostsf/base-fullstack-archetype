@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/WEB-INF/views">
+	<excludes>
+    <!-- 指明满足“/exclude.jsp*”的页面，将被排除，不被装饰 -->
+      <pattern>*/ajax/*</pattern>
+	  <pattern>*.css</pattern>
+	</excludes>
+   
+	<decorator name="main" page="decorator.html">
+		<pattern>*.htm</pattern>
+	</decorator>
+
+</decorators>
+

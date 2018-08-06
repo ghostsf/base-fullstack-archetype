@@ -1,0 +1,4 @@
+/**
+ * 说明类
+ */
+package ${package}.*;

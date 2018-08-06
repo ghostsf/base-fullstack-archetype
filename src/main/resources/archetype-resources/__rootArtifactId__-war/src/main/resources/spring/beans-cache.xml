@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd"
+	default-autowire="byName">
+	
+	<!-- <bean id="redisConf" class="com.blackuio.rd.cache.conf.CacheConf">
+		 <property name="server" value="${redis.server}" />
+		 <property name="port" value="${redis.port}" />
+		 <property name="dbIndex" value="${redis.index}" />
+	</bean>
+	
+	<bean id="redisInit" class="com.blackuio.rd.cache.init.RedisManagerInit" scope="singleton">
+		<property name ="cacheConf"><ref bean ="redisConf" /></property>
+	</bean> 
+	<bean id="memcacheConf" class="com.blackuio.rd.cache.conf.CacheConf">
+		 <property name="server" value="${memcache.server}" />
+		 <property name="port" value="${memcache.port}" />
+	</bean>
+	
+	<bean id="memcacheInit" class="com.blackuio.rd.cache.init.MemcacheManagerInit" scope="singleton">
+		<property name ="cacheConf"><ref bean ="memcacheConf" /></property>
+	</bean> -->
+</beans>
