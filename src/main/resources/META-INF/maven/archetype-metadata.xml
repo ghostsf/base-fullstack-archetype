@@ -21,6 +21,12 @@
 				<include>pom.xml</include>
 			</includes>
 		</fileSet>
+		<fileSet>
+			<directory></directory>
+			<includes>
+				<include>.gitignore</include>
+			</includes>
+		</fileSet>
 	</fileSets>
 	<modules>
 		<module id="${rootArtifactId}-api" dir="__rootArtifactId__-api" name="${rootArtifactId}-api">
