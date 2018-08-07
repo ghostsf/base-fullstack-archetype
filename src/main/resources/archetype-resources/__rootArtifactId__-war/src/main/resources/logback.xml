@@ -2,7 +2,7 @@
 
 <configuration>
 	<!-- 日志文件目录 -->
-	<property name="log.path" value="/home/lbyw/logs/${rootArtifactId}" />
+	<property name="log.path" value="/home/logs/${rootArtifactId}" />
   	
 	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">

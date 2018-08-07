@@ -43,7 +43,7 @@ public class Response<T> implements Serializable {
         return data;
     }
 
-    public Response<T> setObj(T data) {
+    public Response<T> setData(T data) {
         this.data = data;
         return this;
     }
