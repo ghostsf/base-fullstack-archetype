@@ -23,6 +23,7 @@ public class AppException extends RuntimeException {
         return this.responseCode;
     }
 
+    @Override
     public Throwable fillInStackTrace() {
         return this;
     }

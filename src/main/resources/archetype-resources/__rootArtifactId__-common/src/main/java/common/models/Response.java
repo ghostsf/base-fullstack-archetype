@@ -47,4 +47,16 @@ public class Response<T> implements Serializable {
         this.data = data;
         return this;
     }
+
+    public static <T> Response success(T data) {
+        return new Response(ErrorCodeEnum.SUCCESS.getResponseCode(), "", data);
+    }
+
+    public static Response success(String msg) {
+        return new Response(ErrorCodeEnum.SUCCESS.getResponseCode(), msg);
+    }
+
+    public static <T> Response success(String msg, T data) {
+        return new Response(ErrorCodeEnum.SUCCESS.getResponseCode(), msg, data);
+    }
 }

@@ -4,6 +4,7 @@ package ${package}.common.models;
 import java.io.Serializable;
 
 public class PageReq implements Serializable {
+    public static final int DEFAULT_PAGE_SIZE = 1000;
     private Integer pageSize;
     private Integer pageNum;
 
@@ -30,7 +31,7 @@ public class PageReq implements Serializable {
             setPageNum(defaultPageNum);
         }
 
-        if (this.pageSize == null || this.pageSize > 1000 || this.pageSize <= 0) {
+        if (this.pageSize == null || this.pageSize > DEFAULT_PAGE_SIZE || this.pageSize <= 0) {
             setPageSize(defaultPageSize);
         }
     }

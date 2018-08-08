@@ -43,11 +43,15 @@ public class AccessLogFilter implements Filter {
      */
     private static String JS_VERSION = DateUtils.format(new Date(), DateFormatEnum.yyyyMMddHHmm);
 
-    // 截取参数的最大长度
-    protected int maxLength = 32;
+    /**
+     * 截取参数的最大长度
+     */
+    private int maxLength = 32;
 
-    // 不允许记录的action参数列表
-    protected Set<String> excludeParams = new HashSet<String>() {
+    /**
+     * 不允许记录的action参数列表
+     */
+    private Set<String> excludeParams = new HashSet<String>() {
         /**
          */
         private static final long serialVersionUID = 7661624449941012689L;
@@ -122,13 +126,11 @@ public class AccessLogFilter implements Filter {
             String params = "";
             if (contentType != null) {
                 String lowerCaseContentType = contentType.toLowerCase();
-                if (contentType == null || lowerCaseContentType.indexOf("application/x-www-form-urlencoded") > -1) {
+                if (lowerCaseContentType.contains("application/x-www-form-urlencoded")) {
                     // form表单提交
                     params = getFormParam(request);
-                } else if (lowerCaseContentType.indexOf("application/json") > -1) {
-                    if (request instanceof HttpServletRequest) {
-                        requestWrapper = new BodyReaderHttpServletRequestWrapper(request);
-                    }
+                } else if (lowerCaseContentType.contains("application/json")) {
+                    requestWrapper = new BodyReaderHttpServletRequestWrapper(request);
                     // json方式提交
                     params = getJsonParam(requestWrapper);
                 }
