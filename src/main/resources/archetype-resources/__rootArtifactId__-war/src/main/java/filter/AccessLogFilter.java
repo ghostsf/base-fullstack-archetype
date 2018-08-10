@@ -38,6 +38,10 @@ public class AccessLogFilter implements Filter {
 
     private static final String STR_AND = "&";
 
+    private static final String MEDIA_FORM = "application/x-www-form-urlencoded";
+
+    private static final String MEDIA_JSON = "application/json";
+
     /**
      * js版本号
      */
@@ -126,10 +130,10 @@ public class AccessLogFilter implements Filter {
             String params = "";
             if (contentType != null) {
                 String lowerCaseContentType = contentType.toLowerCase();
-                if (lowerCaseContentType.contains("application/x-www-form-urlencoded")) {
+                if (lowerCaseContentType.contains(MEDIA_FORM)) {
                     // form表单提交
                     params = getFormParam(request);
-                } else if (lowerCaseContentType.contains("application/json")) {
+                } else if (lowerCaseContentType.contains(MEDIA_JSON)) {
                     requestWrapper = new BodyReaderHttpServletRequestWrapper(request);
                     // json方式提交
                     params = getJsonParam(requestWrapper);
