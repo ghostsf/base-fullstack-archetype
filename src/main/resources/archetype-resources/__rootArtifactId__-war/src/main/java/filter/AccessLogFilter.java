@@ -109,9 +109,6 @@ public class AccessLogFilter implements Filter {
         // 调用流水号
         MDC.put(STR_INVOKENO, RandomUtil.simpleUUID());
 
-        // 取parameters
-        Enumeration parameters = request.getParameterNames();
-
         // 计算action method执行方法
         long startTime = System.currentTimeMillis();
 
