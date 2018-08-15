@@ -8,7 +8,6 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -74,7 +73,7 @@ public class ExceptionResolver implements HandlerExceptionResolver {
         PrintWriter out = null;
         
         try {
-            Response<Object> result = new Response<Object>(code, message);
+            Response<Object> result = new Response<>(code, message);
             out = response.getWriter();
             out.write(JSON.toJSONString(result));
         } catch (IOException e) {
@@ -95,7 +94,7 @@ public class ExceptionResolver implements HandlerExceptionResolver {
      * 处理普通响应
      */
     private ModelAndView processNormalResponse(String code,String message){
-        Map<String, Object> result = new HashMap<String, Object>(2);
+        Map<String, Object> result = new HashMap<>(2);
         result.put("code", code);
         result.put("msg", message);
         return new ModelAndView("/exception/internal_error", result);

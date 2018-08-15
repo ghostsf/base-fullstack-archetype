@@ -1,5 +1,6 @@
 package ${package}.common.interceptor;
 
+import ${package}.common.constants.ApplicationProperties;
 import ${package}.common.exception.AppException;
 import ${package}.common.models.Response;
 import cn.hutool.core.util.RandomUtil;
@@ -14,9 +15,8 @@ import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 
 public class ApiInterceptor implements MethodInterceptor {
-    public ApiInterceptor() {
-    }
 
+    @Override
     public Object invoke(MethodInvocation invocation) throws Throwable {
         long startTime = System.currentTimeMillis();
         long executionTime = 0L;
@@ -25,12 +25,12 @@ public class ApiInterceptor implements MethodInterceptor {
         Object result = null;
         Logger LOGGER = LoggerFactory.getLogger(target.getClass());
         String methodName = target.getClass().getSimpleName() + "." + method.getName();
-        boolean hasInvokeNo = StringUtils.isNotBlank(MDC.get("invokeNo"));
+        boolean hasInvokeNo = StringUtils.isNotBlank(MDC.get(ApplicationProperties.STR_INVOKENO));
 
         try {
             try {
                 if (!hasInvokeNo) {
-                    MDC.put("invokeNo", RandomUtil.simpleUUID());
+                    MDC.put(ApplicationProperties.STR_INVOKENO, RandomUtil.simpleUUID());
                 }
 
                 Object[] args = invocation.getArguments();
@@ -56,7 +56,7 @@ public class ApiInterceptor implements MethodInterceptor {
             }
 
             if (!hasInvokeNo) {
-                MDC.remove("invokeNo");
+                MDC.remove(ApplicationProperties.STR_INVOKENO);
             }
 
         }
