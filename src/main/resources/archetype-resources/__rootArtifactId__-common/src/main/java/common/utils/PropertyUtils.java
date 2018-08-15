@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
 import java.lang.reflect.Field;
-import java.util.Iterator;
 import java.util.Properties;
 import java.util.Map.Entry;
 import org.apache.commons.lang3.StringUtils;
@@ -39,29 +38,25 @@ public class PropertyUtils {
     }
 
     public static void propertyAutoFill(Properties properties, Class<?> clazz) {
-        try {
-            Iterator var3 = properties.entrySet().iterator();
+        String attrName = "";
+        for (Object o : properties.entrySet()) {
+            try {
+                Entry<Object, Object> property = (Entry) o;
+                String key = (String) property.getKey();
+                String value = (String) property.getValue();
+                attrName = propertyKey2JAttrName(key);
+                Field filed;
+                filed = clazz.getDeclaredField(attrName);
+                filed.setAccessible(true);
+                LOGGER.info("propertyAutoFill,key:{},value:{}", filed.getName(), value);
+                filed.set(filed.getName(), value);
 
-            while(var3.hasNext()) {
-                Entry<Object, Object> property = (Entry)var3.next();
-                String key = (String)property.getKey();
-                String value = (String)property.getValue();
-                String attrName = propertyKey2JAttrName(key);
-                Field filed = null;
-
-                try {
-                    filed = clazz.getDeclaredField(attrName);
-                    filed.setAccessible(true);
-                    LOGGER.info("propertyAutoFill,key:{},value:{}", filed.getName(), value);
-                    filed.set(filed.getName(), value);
-                } catch (NoSuchFieldException var9) {
-                    LOGGER.info("{} not exist in {}", attrName, clazz.getName());
-                }
+            } catch (NoSuchFieldException e) {
+                LOGGER.info("{} not exist in {}", attrName, clazz.getName());
+            } catch (Exception var10) {
+                LOGGER.error("propertyAutoFill fail", var10);
+                throw new AppException("9999", "propertyAutoFill fail");
             }
-
-        } catch (Exception var10) {
-            LOGGER.error("propertyAutoFill fail", var10);
-            throw new AppException("9999", "propertyAutoFill fail");
         }
     }
 
@@ -79,7 +74,7 @@ public class PropertyUtils {
         if (StringUtils.isBlank(properyKey)) {
             return null;
         } else {
-            StringBuffer attrName = new StringBuffer(50);
+            StringBuilder attrName = new StringBuilder(50);
             String[] partNames = properyKey.split("\\.");
 
             for(int index = 0; index < partNames.length; ++index) {

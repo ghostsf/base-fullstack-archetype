@@ -2,7 +2,6 @@ package ${package}.controller.base;
 
 import java.beans.PropertyEditorSupport;
 
-import org.apache.commons.lang3.StringEscapeUtils;
 import org.apache.commons.lang3.StringUtils;
 
 /**

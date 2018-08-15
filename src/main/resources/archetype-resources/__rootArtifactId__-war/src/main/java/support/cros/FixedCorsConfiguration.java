@@ -1,4 +1,4 @@
-package ${package}.support;
+package ${package}.support.cros;
 
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;

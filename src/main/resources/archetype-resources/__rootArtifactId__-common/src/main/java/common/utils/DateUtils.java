@@ -20,7 +20,7 @@ public final class DateUtils extends org.apache.commons.lang3.time.DateUtils{
      */
     private DateUtils(){
         
-    };
+    }
     
     /**
      * 日期格式化
@@ -68,7 +68,7 @@ public final class DateUtils extends org.apache.commons.lang3.time.DateUtils{
         
         try {
             
-            return parseDate(date, new String[]{ dateFormatEnum.getFormat() });
+            return parseDate(date, dateFormatEnum.getFormat());
             
         } catch (ParseException e) {
             
