@@ -73,7 +73,7 @@ public class ExceptionResolver implements HandlerExceptionResolver {
         PrintWriter out = null;
         
         try {
-            Response<Object> result = new Response<>(code, message);
+            Response<String> result = new Response<>(code, message);
             out = response.getWriter();
             out.write(JSON.toJSONString(result));
         } catch (IOException e) {

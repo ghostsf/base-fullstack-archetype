@@ -6,8 +6,8 @@ import ${package}.common.enums.ErrorCodeEnum;
  * system app exception
  */
 public class AppException extends RuntimeException {
-    private String responseCode;
-    private String errorMessage;
+    private final String responseCode;
+    private final String errorMessage;
 
     public AppException(ErrorCodeEnum errorCodeEnum) {
         super(errorCodeEnum.getResponseCode() + ":" + errorCodeEnum.getResponseMsg());
@@ -34,11 +34,4 @@ public class AppException extends RuntimeException {
         return this.errorMessage;
     }
 
-    public void setResponseCode(String responseCode) {
-        this.responseCode = responseCode;
-    }
-
-    public void setErrorMessage(String errorMessage) {
-        this.errorMessage = errorMessage;
-    }
 }

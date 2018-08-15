@@ -42,16 +42,16 @@ public class ApiInterceptor implements MethodInterceptor {
             } catch (AppException var19) {
                 LOGGER.info("appException occoured,responseCode:{},responseMsg:{}", var19.getResponseCode(), var19.getErrorMessage());
                 LOGGER.error("appException occoured", var19);
-                result = new Response<Object>(var19.getResponseCode(), var19.getErrorMessage());
+                result = new Response<String>(var19.getResponseCode(), var19.getErrorMessage());
             } catch (Throwable var20) {
                 LOGGER.info("unknow excepiton occoured");
                 LOGGER.error("unknown exception occoued", var20);
-                result = new Response<Object>(ErrorCodeEnum.SYSTEM_ERROR.getResponseCode(),ErrorCodeEnum.SYSTEM_ERROR.getResponseMsg());
+                result = new Response<String>(ErrorCodeEnum.SYSTEM_ERROR.getResponseCode(),ErrorCodeEnum.SYSTEM_ERROR.getResponseMsg());
             }
         } finally {
             executionTime = System.currentTimeMillis() - startTime;
             if (result != null) {
-                Response<Object> response = (Response)result;
+                Response<String> response = (Response)result;
                 LOGGER.info("exit method:{},code:{},msg:{},spend:{}", new Object[]{methodName, response.getCode(), response.getMsg(), executionTime});
             }
 

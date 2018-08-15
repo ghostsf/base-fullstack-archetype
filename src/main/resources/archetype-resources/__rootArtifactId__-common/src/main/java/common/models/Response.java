@@ -2,7 +2,7 @@ package ${package}.common.models;
 
 import java.io.Serializable;
 
-public class Response<T> implements Serializable {
+public class Response<T extends Serializable> implements Serializable {
     private String code;
     private String msg;
     private T data;
@@ -48,7 +48,7 @@ public class Response<T> implements Serializable {
         return this;
     }
 
-    public static <T> Response success(T data) {
+    public static <T extends Serializable> Response success(T data) {
         return new Response(ErrorCodeEnum.SUCCESS.getResponseCode(), "", data);
     }
 
@@ -56,7 +56,7 @@ public class Response<T> implements Serializable {
         return new Response(ErrorCodeEnum.SUCCESS.getResponseCode(), msg);
     }
 
-    public static <T> Response success(String msg, T data) {
+    public static <T extends Serializable> Response success(String msg, T data) {
         return new Response(ErrorCodeEnum.SUCCESS.getResponseCode(), msg, data);
     }
 }

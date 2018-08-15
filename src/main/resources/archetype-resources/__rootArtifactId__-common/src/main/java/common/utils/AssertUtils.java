@@ -42,14 +42,6 @@ public class AssertUtils {
         }
     }
 
-//    public static <T> void isSuccess(GenericResponse<T> response) {
-//        isTrue(response.isSuccess(), response.getResponseCode(), response.getResponseMsg());
-//    }
-//
-//    public static <T> void isSuccess(GenericResponse<T> response, IErrorCodeEnum errorCodeEnum) {
-//        isTrue(response.isSuccess(), errorCodeEnum.getResponseCode(), errorCodeEnum.getResponseMsg());
-//    }
-
     public static void isTrue(boolean bool, String responseCode, String responseMsg) {
         if (!bool) {
             throw new AppException(responseCode, responseMsg);
