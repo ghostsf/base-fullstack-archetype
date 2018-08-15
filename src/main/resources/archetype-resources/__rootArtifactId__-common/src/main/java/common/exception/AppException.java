@@ -1,8 +1,10 @@
 package ${package}.common.exception;
 
 import ${package}.common.enums.ErrorCodeEnum;
-import java.io.Serializable;
 
+/**
+ * system app exception
+ */
 public class AppException extends RuntimeException {
     private String responseCode;
     private String errorMessage;
@@ -30,5 +32,13 @@ public class AppException extends RuntimeException {
 
     public String getErrorMessage() {
         return this.errorMessage;
+    }
+
+    public void setResponseCode(String responseCode) {
+        this.responseCode = responseCode;
+    }
+
+    public void setErrorMessage(String errorMessage) {
+        this.errorMessage = errorMessage;
     }
 }
