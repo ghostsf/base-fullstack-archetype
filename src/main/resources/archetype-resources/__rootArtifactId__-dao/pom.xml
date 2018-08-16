@@ -29,7 +29,6 @@
 		<dependency>
 			<groupId>com.blackuio.base</groupId>
 			<artifactId>blackuio-sqlgenerator</artifactId>
-			<scope>test</scope>
 		</dependency>
 
 	</dependencies>

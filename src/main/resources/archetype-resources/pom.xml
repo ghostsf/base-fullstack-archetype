@@ -108,7 +108,6 @@
                 <groupId>com.blackuio.base</groupId>
                 <artifactId>blackuio-sqlgenerator</artifactId>
                 <version>${code.generator.mysql.version}</version>
-                <scope>test</scope>
             </dependency>
 
 			<dependency>
