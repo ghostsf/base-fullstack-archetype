@@ -6,7 +6,7 @@ import java.util.Date;
 
 import org.apache.commons.lang3.time.DateFormatUtils;
 
-import ${package}.common.exception.AppException;
+import com.blackuio.base.exception.AppException;
 import ${package}.common.enums.DateFormatEnum;
 
 

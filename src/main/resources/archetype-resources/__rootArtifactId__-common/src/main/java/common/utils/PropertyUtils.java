@@ -1,6 +1,7 @@
 package ${package}.common.utils;
 
-import ${package}.common.exception.AppException;
+import ${package}.common.enums.ErrorCodeEnum;
+import com.blackuio.base.exception.AppException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
@@ -33,7 +34,7 @@ public class PropertyUtils {
             return properties;
         } catch (IOException var4) {
             LOGGER.error("propertyString2Property fail", var4);
-            throw new AppException("9999", "propertyString2Property fail");
+            throw new AppException(ErrorCodeEnum.SYSTEM_ERROR.getResponseCode(), "propertyString2Property fail");
         }
     }
 
@@ -55,7 +56,7 @@ public class PropertyUtils {
                 LOGGER.info("{} not exist in {}", attrName, clazz.getName());
             } catch (Exception var10) {
                 LOGGER.error("propertyAutoFill fail", var10);
-                throw new AppException("9999", "propertyAutoFill fail");
+                throw new AppException(ErrorCodeEnum.SYSTEM_ERROR.getResponseCode(), "propertyAutoFill fail");
             }
         }
     }
@@ -66,7 +67,7 @@ public class PropertyUtils {
             propertyAutoFill(properties, clazz);
         } catch (IOException var3) {
             LOGGER.error("propertyAutoFill fail", var3);
-            throw new AppException("9999", "propertyAutoFill fail");
+            throw new AppException(ErrorCodeEnum.SYSTEM_ERROR.getResponseCode(), "propertyAutoFill fail");
         }
     }
 

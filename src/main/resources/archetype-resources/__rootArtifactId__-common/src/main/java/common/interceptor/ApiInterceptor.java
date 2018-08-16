@@ -1,8 +1,8 @@
 package ${package}.common.interceptor;
 
 import ${package}.common.constants.ApplicationProperties;
-import ${package}.common.exception.AppException;
-import ${package}.common.models.Response;
+import com.blackuio.base.exception.AppException;
+import com.blackuio.base.model.Response;
 import cn.hutool.core.util.RandomUtil;
 import ${package}.common.enums.ErrorCodeEnum;
 

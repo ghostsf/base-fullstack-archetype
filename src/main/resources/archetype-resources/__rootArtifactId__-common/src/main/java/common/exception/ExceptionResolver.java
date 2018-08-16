@@ -13,8 +13,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
-import ${package}.common.models.Response;
 import ${package}.common.enums.ErrorCodeEnum;
+import com.blackuio.base.exception.AppException;
+import com.blackuio.base.model.Response;
 import com.alibaba.fastjson.JSON;
 
 /**
