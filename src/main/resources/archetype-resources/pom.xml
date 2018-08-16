@@ -57,7 +57,7 @@
 
 		<${rootArtifactId}.service.api.version>${version}</${rootArtifactId}.service.api.version>
 		<!-- blackuio -->
-		<com.blackuio.common.version>1.0.0</com.blackuio.common.version>
+		<com.blackuio.common.version>1.0.0-SNAPSHOT</com.blackuio.common.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
