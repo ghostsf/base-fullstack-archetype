@@ -39,7 +39,7 @@
         </constructor-arg>
     </bean>
 
-    <bean id="corsConfiguration" class="${package}.support.FixedCorsConfiguration">
+    <bean id="corsConfiguration" class="${package}.support.cros.FixedCorsConfiguration">
         <property name="allowCredentials" value="true"/>
         <property name="allowedMethods">
             <list>
