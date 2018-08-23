@@ -3,7 +3,7 @@ package ${package}.filter;
 import ${package}.common.constants.ApplicationProperties;
 
 import com.google.common.collect.Sets;
-import com.blackuio.base.NetUtils;
+import com.blackuio.base.utils.NetUtils;
 import cn.hutool.core.util.RandomUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
