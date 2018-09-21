@@ -1,4 +1,4 @@
-package ${package}.support.cros;
+package ${package}.support.cors;
 
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;

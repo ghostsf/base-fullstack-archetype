@@ -27,6 +27,7 @@
 		<freemarker-version>2.3.22</freemarker-version>
 		<sitemesh.version>2.4.2</sitemesh.version>
 
+		<castor.xml.version>1.4.1</castor.xml.version>
 
 		<xxl.conf.version>1.5.0</xxl.conf.version>
 
@@ -385,6 +386,15 @@
             <artifactId>commons-fileupload</artifactId>
             <version>${commons.fileupload.version}</version>
         </dependency>
+
+		<dependency>
+			<groupId>org.codehaus.castor</groupId>
+			<artifactId>castor-xml</artifactId>
+			<version>${castor.xml.version}</version>
+		</dependency>
+
+
+
 	</dependencies>
 
 	<build>
