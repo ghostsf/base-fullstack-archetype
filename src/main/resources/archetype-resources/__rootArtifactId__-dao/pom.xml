@@ -19,9 +19,13 @@
 			<groupId>com.github.pagehelper</groupId>
 			<artifactId>pagehelper</artifactId>
 		</dependency>
-        <dependency>
-            <groupId>com.blackuio.base</groupId>
-            <artifactId>blackuio-sqlgenerator</artifactId>
-        </dependency>
+		<dependency>
+			<groupId>com.github.jsqlparser</groupId>
+			<artifactId>jsqlparser</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.blackuio.base</groupId>
+			<artifactId>blackuio-sqlgenerator</artifactId>
+		</dependency>
 	</dependencies>
 </project>

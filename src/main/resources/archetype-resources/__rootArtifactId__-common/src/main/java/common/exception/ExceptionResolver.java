@@ -8,19 +8,20 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerExceptionResolver;
 import org.springframework.web.servlet.ModelAndView;
-import ${package}.common.models.Response;
 import ${package}.common.enums.ErrorCodeEnum;
+import com.blackuio.base.exception.AppException;
+import com.blackuio.base.model.Response;
 import com.alibaba.fastjson.JSON;
 
 /**
  * 框架统一异常处理器
  *
+ * @author robot
  */
 @Component
 public class ExceptionResolver implements HandlerExceptionResolver {
@@ -36,23 +37,15 @@ public class ExceptionResolver implements HandlerExceptionResolver {
         String message = "";
         //已知异常处理
         if (ex instanceof AppException) {
-            
             AppException appException = (AppException) ex;
-            
             code = appException.getResponseCode();
-            
             message = appException.getErrorMessage();
-            
             LOGGER.info("AppException occoured,code:{},message:{}",code,message);
-            
-        }else {//未知异常处理
-            
+        }else {
+            //未知异常处理
             LOGGER.info("unknown exception occoured");
-            
             LOGGER.error("unknown exception occoured",ex);
-            
             code = ErrorCodeEnum.SYSTEM_ERROR.getResponseCode();
-            
             message = ErrorCodeEnum.SYSTEM_ERROR.getResponseMsg();
         }
         
@@ -77,25 +70,16 @@ public class ExceptionResolver implements HandlerExceptionResolver {
     private ModelAndView processAjaxResponse(HttpServletResponse response,String code,String message){
         
         response.setContentType("text/plain; charset=utf-8");
-        
         response.setCharacterEncoding("UTF-8");
-        
         PrintWriter out = null;
         
         try {
-
-            Response<Object> result = new Response<Object>(code, message);
-
+            Response<String> result = new Response<>(code, message);
             out = response.getWriter();
-            
             out.write(JSON.toJSONString(result));
-            
         } catch (IOException e) {
-            
             LOGGER.info(" response write error");
-            
-            LOGGER.error("response write error",e);
-            
+            LOGGER.error("response write error", e);
         } finally {
             
             if (out!=null) {
@@ -111,12 +95,9 @@ public class ExceptionResolver implements HandlerExceptionResolver {
      * 处理普通响应
      */
     private ModelAndView processNormalResponse(String code,String message){
-        Map<String, Object> result = new HashMap<String, Object>();
-
+        Map<String, Object> result = new HashMap<>(2);
         result.put("code", code);
-
         result.put("msg", message);
-
         return new ModelAndView("/exception/internal_error", result);
     }
 }

@@ -31,9 +31,7 @@ public class BodyReaderHttpServletRequestWrapper extends HttpServletRequestWrapp
         } catch (IOException e) {
             LOGGER.error("read input stream error");
         } finally {
-            if (bufferedReader != null) {
-                bufferedReader.close();
-            }
+            bufferedReader.close();
         }
         body = sb.toString().getBytes(characterEncoding);
     }

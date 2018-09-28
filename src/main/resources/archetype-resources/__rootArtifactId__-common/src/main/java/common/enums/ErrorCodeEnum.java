@@ -1,6 +1,8 @@
 package ${package}.common.enums;
 
-public enum ErrorCodeEnum {
+import com.blackuio.base.enums.IErrorCodeEnum;
+
+public enum ErrorCodeEnum implements IErrorCodeEnum {
 
     /**
      * 成功
@@ -34,10 +36,12 @@ public enum ErrorCodeEnum {
         this.responseMsg = responseMsg;
     }
 
+    @Override
 	public String getResponseCode() {
 		return responseCode;
 	}
 
+    @Override
 	public String getResponseMsg() {
 		return responseMsg;
 	}

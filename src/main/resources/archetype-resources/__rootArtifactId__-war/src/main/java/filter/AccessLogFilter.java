@@ -1,9 +1,9 @@
 package ${package}.filter;
 
-import ${package}.common.enums.DateFormatEnum;
-import ${package}.common.utils.DateUtils;
+import ${package}.common.constants.ApplicationProperties;
 
-import com.blackuio.base.NetUtils;
+import com.google.common.collect.Sets;
+import com.blackuio.base.utils.NetUtils;
 import cn.hutool.core.util.RandomUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -15,9 +15,7 @@ import javax.servlet.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Date;
 import java.util.Enumeration;
-import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -38,34 +36,31 @@ public class AccessLogFilter implements Filter {
 
     private static final String STR_AND = "&";
 
+    private static final String MEDIA_FORM = "application/x-www-form-urlencoded";
+
+    private static final String MEDIA_JSON = "application/json";
+
     /**
-     * js版本号
+     * 截取参数的最大长度
      */
-    private static String JS_VERSION = DateUtils.format(new Date(), DateFormatEnum.yyyyMMddHHmm);
+    private int maxLength = 32;
 
-    // 截取参数的最大长度
-    protected int maxLength = 32;
-
-    // 不允许记录的action参数列表
-    protected Set<String> excludeParams = new HashSet<String>() {
-        /**
-         */
-        private static final long serialVersionUID = 7661624449941012689L;
-
-        {
-            add("password");
-        }
-
-    };
+    /**
+     * 不允许记录的action参数列表
+     */
+    private static final Set<String> excludeParams = Sets.newHashSet();
 
     /**
      * {@inheritDoc}
      */
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-
+        LOGGER.info("accessLog init");
     }
 
+    static {
+        excludeParams.add("password");
+    }
     /**
      * {@inheritDoc}
      */
@@ -78,7 +73,7 @@ public class AccessLogFilter implements Filter {
 
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
-        request.setAttribute("jsVersion", JS_VERSION);
+        request.setAttribute("jsVersion", ApplicationProperties.jsVersion);
 
         String path = request.getRequestURI();
 
@@ -96,48 +91,32 @@ public class AccessLogFilter implements Filter {
         // 向MDC里面set ip、user
         MDC.put(STR_IP, ip);
 
-//        MDC.put(STR_SESSION_ID, sessionId);
-
         // 调用流水号
         MDC.put(STR_INVOKENO, RandomUtil.simpleUUID());
-
-        // 取parameters
-        Enumeration parameters = request.getParameterNames();
 
         // 计算action method执行方法
         long startTime = System.currentTimeMillis();
 
         long executionTime = 0L;
 
-        // 拼接LOG信息
-        StringBuilder message = new StringBuilder(500);
         try {// 调用用户访问的CONTROLLER
-
-            message.append("Controller:");
-            message.append(path);
-            message.append("|Params:");
 
             ServletRequest requestWrapper = null;
             String contentType = request.getContentType();
             String params = "";
             if (contentType != null) {
                 String lowerCaseContentType = contentType.toLowerCase();
-                if (contentType == null || lowerCaseContentType.indexOf("application/x-www-form-urlencoded") > -1) {
+                if (lowerCaseContentType.contains(MEDIA_FORM)) {
                     // form表单提交
                     params = getFormParam(request);
-                } else if (lowerCaseContentType.indexOf("application/json") > -1) {
-                    if (request instanceof HttpServletRequest) {
-                        requestWrapper = new BodyReaderHttpServletRequestWrapper(request);
-                    }
+                } else if (lowerCaseContentType.contains(MEDIA_JSON)) {
+                    requestWrapper = new BodyReaderHttpServletRequestWrapper(request);
                     // json方式提交
                     params = getJsonParam(requestWrapper);
                 }
             }
 
-            if (StringUtils.isNotBlank(params.toString())) {
-                message.append(params.toString());
-            }
-            LOGGER.info(message.toString());
+            LOGGER.info("Controller:{}|Params:{}", path, params);
 
             if (null == requestWrapper) {
                 chain.doFilter(request, response);
@@ -196,5 +175,6 @@ public class AccessLogFilter implements Filter {
      */
     @Override
     public void destroy() {
+        LOGGER.info("accessLog destroy");
     }
 }

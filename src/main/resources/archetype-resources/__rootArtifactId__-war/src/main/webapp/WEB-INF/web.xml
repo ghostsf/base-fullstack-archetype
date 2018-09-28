@@ -37,17 +37,33 @@
     </servlet-mapping>
 
 
+    <filter>
+        <filter-name>corsFilter</filter-name>
+        <filter-class>org.springframework.web.filter.DelegatingFilterProxy
+        </filter-class>
+        <init-param>
+            <param-name>targetFilterLifecycle</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>corsFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
 
     <!--sitemesh -->
     <filter>
         <filter-name>sitemesh</filter-name>
-        <filter-class>com.opensymphony.sitemesh.webapp.SiteMeshFilter</filter-class>
+        <filter-class>${package}.filter.SiteMeshFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>sitemesh</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
+    
     <!-- sitemesh freemarker -->
     <servlet>
         <servlet-name>sitemesh-freemarker</servlet-name>

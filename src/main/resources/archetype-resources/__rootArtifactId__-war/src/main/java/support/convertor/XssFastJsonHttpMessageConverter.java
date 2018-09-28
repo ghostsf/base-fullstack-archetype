@@ -25,16 +25,16 @@ import java.util.Map;
 public class XssFastJsonHttpMessageConverter extends FastJsonHttpMessageConverter {
     private static final Logger LOGGER = LoggerFactory.getLogger(XssFastJsonHttpMessageConverter.class);
 
-    public static final String NoBreakChar = "\u00A0";
+    public static final String NO_BREAK_CHAR = "\u00A0";
 
     @Override
-    protected Object readInternal(Class<?> clazz, HttpInputMessage inputMessage) throws IOException, HttpMessageNotReadableException {
+    protected Object readInternal(Class<?> clazz, HttpInputMessage inputMessage) throws IOException {
         return super.readInternal(clazz, inputMessage);
     }
 
 
     @Override
-    public Object read(Type type, Class<?> contextClass, HttpInputMessage inputMessage) throws IOException, HttpMessageNotReadableException {
+    public Object read(Type type, Class<?> contextClass, HttpInputMessage inputMessage) throws IOException {
         InputStream in = inputMessage.getBody();
 
 
@@ -68,15 +68,15 @@ public class XssFastJsonHttpMessageConverter extends FastJsonHttpMessageConverte
 
     private void checkObject(JSONObject jsonObject) {
         if (jsonObject != null) {
-            for (String key : jsonObject.keySet()) {
-                Object obj = jsonObject.get(key);
+            for (Map.Entry<String, Object> stringObjectEntry : jsonObject.entrySet()) {
+                Object obj = stringObjectEntry.getValue();
                 if (obj instanceof Collection) {
                     checkArray((JSONArray) obj);
                 } else if (obj instanceof Map) {
                     checkObject((JSONObject) obj);
                 } else if (obj instanceof String) {
                     String strText = trim((String) obj);
-                    jsonObject.put(key, strText);
+                    jsonObject.put(stringObjectEntry.getKey(), strText);
                 }
             }
         }
@@ -100,6 +100,6 @@ public class XssFastJsonHttpMessageConverter extends FastJsonHttpMessageConverte
 
 
     private String trim(String origin) {
-        return StringUtils.trim(origin).replace(NoBreakChar, "");
+        return StringUtils.trim(origin).replace(NO_BREAK_CHAR, "");
     }
 }

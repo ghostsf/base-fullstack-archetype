@@ -14,8 +14,10 @@ import ${package}.common.utils.DateUtils;
  */
 public class ApplicationProperties {
 	/**
-	 *  js版本号
+	 * js版本号
 	 */
-	public static String jsVersion = DateUtils.format(new Date(), DateFormatEnum.yyyyMMddHHmm);
+	public static final String jsVersion = DateUtils.format(new Date(), DateFormatEnum.yyyyMMddHHmm);
+
+	public static final String STR_INVOKENO = "invokeNo";
 
 }
