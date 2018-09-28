@@ -54,7 +54,8 @@
 
 		<${rootArtifactId}.service.api.version>${version}</${rootArtifactId}.service.api.version>
 		<!-- blackuio -->
-		<com.blackuio.common.version>1.0.0</com.blackuio.common.version>
+		<com.blackuio.common.version>${commonVersion}</com.blackuio.common.version>
+        <code.generator.mysql.version>1.0-SNAPSHOT</code.generator.mysql.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -78,8 +79,6 @@
 					</exclusion>
 				</exclusions>
 			</dependency>
-			
-
 			<dependency>
 				<groupId>${groupId}</groupId>
 				<artifactId>${rootArtifactId}-api</artifactId>
@@ -100,8 +99,7 @@
 				<artifactId>${rootArtifactId}-service</artifactId>
 				<version>${project.version}</version>
 			</dependency>
-			
-				
+
 			<dependency>
 				<groupId>${groupId}</groupId>
 				<artifactId>${rootArtifactId}-integration</artifactId>
@@ -156,6 +154,12 @@
 				<artifactId>elastic-job-spring</artifactId>
 				<version>${elastic.job.spring.version}</version>
 			</dependency>
+
+            <dependency>
+                <groupId>com.blackuio.base</groupId>
+                <artifactId>blackuio-sqlgenerator</artifactId>
+                <version>${code.generator.mysql.version}</version>
+            </dependency>
 
 		</dependencies>
 	</dependencyManagement>

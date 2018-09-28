@@ -3,6 +3,7 @@ package ${package}.common.utils;
 import ${package}.common.exception.AppException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.StringReader;
 import java.lang.reflect.Field;
 import java.util.Iterator;
@@ -21,7 +22,7 @@ public class PropertyUtils {
     public static Properties getPropertiesByPath(String propertiesPath) throws IOException {
         InputStream is = PropertyUtils.class.getResourceAsStream("/".concat(propertiesPath));
         Properties properties = new Properties();
-        properties.load(is);
+        properties.load(new InputStreamReader(is));
         return properties;
     }
 
