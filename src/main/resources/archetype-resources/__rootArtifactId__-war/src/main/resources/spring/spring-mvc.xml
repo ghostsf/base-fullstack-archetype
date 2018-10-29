@@ -39,7 +39,7 @@
         <property name="exposeRequestAttributes" value="true"/>
         <property name="requestContextAttribute" value="pageReq"/>
         <property name="cache" value="false"/>
-        <property name="suffix" value=".html"/>
+        <property name="suffix" value=".ftl"/>
     </bean>
     <!-- 文件上传驱动 -->
     <bean id="multipartResolver"
