@@ -1,4 +1,4 @@
-package com.blackuio.iheicheng.common.utils;
+package ${package}.common.utils;
 
 import com.blackuio.base.model.Response;
 import ${package}.common.enums.ErrorCodeEnum;
