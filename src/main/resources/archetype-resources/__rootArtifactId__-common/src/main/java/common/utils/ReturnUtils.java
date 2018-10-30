@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class ReturnUtils {
 
 
-    public static <T extends Serializable> Response success(T data) {
+    public static <T> Response success(T data) {
         return new Response(ErrorCodeEnum.SUCCESS.getResponseCode(), "", data);
     }
 
@@ -16,7 +16,7 @@ public class ReturnUtils {
         return new Response(ErrorCodeEnum.SUCCESS.getResponseCode(), msg);
     }
 
-    public static <T extends Serializable> Response success(String msg, T data) {
+    public static <T> Response success(String msg, T data) {
         return new Response(ErrorCodeEnum.SUCCESS.getResponseCode(), msg, data);
     }
 }
