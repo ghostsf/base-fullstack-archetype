@@ -6,7 +6,7 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd"
 	default-autowire="byName">
 
-	<bean id="applicationPropertyPlugin" class="${package}.common.plugins.PropertyPlugin" scope="singleton">
+	<bean id="applicationPropertyPlugin" class="com.blackuio.base.utils.PropertyUtils" scope="singleton">
 		<constructor-arg>
 			<map>
 				<entry key="property/application.properties">
